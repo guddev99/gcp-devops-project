@@ -1,8 +1,8 @@
 steps:
   # Step to build the Docker image
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/gcpdevops", "."]
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/python-docker-image", "."]
 
   # Step to push the Docker image to Google Container Registry
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/gcpdevops"]
+    args: ["push", "gcr.io/$PROJECT_ID/python-docker-image"]
