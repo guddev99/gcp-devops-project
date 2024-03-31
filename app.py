@@ -5,4 +5,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "Hello, Simple Flask application"
+    return "<center><h1>Hello, this is a simple Flask application</center></h1>"
