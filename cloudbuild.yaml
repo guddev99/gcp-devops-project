@@ -6,3 +6,13 @@ steps:
   # Step to push the Docker image to Google Cloud Artifact Registry
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/$PROJECT_ID/gcpdevops"]
+
+  # Step to deploy the Docker image from Artifact Registry to GKE
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - run
+      - --filename=gke.yaml
+      - --image=gcr.io/$PROJECT_ID/gcpdevops:latest
+      - --location=us-central1-c
+      - --cluster=gcp-devops-project
+      - --namespace=gcp-devops-prod
