@@ -17,7 +17,7 @@ To run this project locally or deploy it to GKE, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/guddev99/gcp-devops-project
+   git clone https://github.com/guddev99/gcp-devops-project.git
    ```
 
 2. Navigate to the project directory:
