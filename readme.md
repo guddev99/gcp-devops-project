@@ -17,13 +17,13 @@ To run this project locally or deploy it to GKE, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/guddev99/gcp-devops-project
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd <project-directory>
+   cd gcp-devops-project
    ```
 
 3. Ensure you have Docker installed:
@@ -44,11 +44,25 @@ To run this project locally or deploy it to GKE, follow these steps:
 
    Access the Flask application at `http://localhost:5000` in your web browser.
 
-6. To deploy to GKE, ensure you have a GKE cluster set up and configured. 
+6. To deploy to GKE, ensure you have a GKE cluster set up and configured. Create a new namespace:
+
+   ```bash
+   # Create a new namespace to isolate the deployment
+   kubectl create namespace <namespace-name>
+   ```
+   > **Note:** Creating a new namespace helps isolate the deployment within your Kubernetes cluster, ensuring better organization and management of resources.
 
 7. Update `cloudbuild.yaml` and `gke.yaml` with your GKE cluster details.
 
 8. Set up a Cloud Build Trigger connected with the project repository. This trigger should be configured to listen for pushes to the main/master branch.
+
+   - Connect your project repository with Cloud Build by following the instructions provided in the [Connecting to source repositories](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers#connect_repo) section of the Cloud Build documentation.
+   ![connect-repository](/images/Connect-repository.png)
+
+   - Once your repository is connected, create a Cloud Build Trigger following the [Creating a build trigger](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers#build_trigger) section of the Cloud Build documentation.
+   ![connect-repository](/images/Cloud-Build-Trigger.png)
+
+   - You can refer to the screenshots provided, which were taken from the GCP console during the setup process.
 
 9. When changes are pushed to this branch, Cloud Build will automatically build the Docker image, push it to Google Artifact Registry, and deploy it to GKE.
 
